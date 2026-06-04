@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* ── Diary page card ── */
+.diary-card {
+  position: relative;
+  background: #fef9e7;
+  border-radius: 2px 8px 8px 2px;
+  box-shadow:
+    2px 3px 12px rgba(0,0,0,0.45),
+    inset 0 0 0 1px rgba(0,0,0,0.06);
+  overflow: hidden;
+  font-family: 'Caveat', cursive;
+}
+
+/* Red margin line */
+.diary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 38px;
+  width: 2px;
+  height: 100%;
+  background: rgba(220, 50, 50, 0.55);
+  z-index: 1;
+}
+
+/* Spiral binding holes */
+.diary-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 38px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 22px,
+    rgba(0,0,0,0.08) 22px,
+    rgba(0,0,0,0.08) 24px
+  );
+  z-index: 1;
+}
+
+/* Ruled lines */
+.diary-lines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 27px,
+    rgba(100, 149, 237, 0.25) 27px,
+    rgba(100, 149, 237, 0.25) 28px
+  );
+  pointer-events: none;
+}
+
+/* Punch holes */
+.diary-hole {
+  position: absolute;
+  left: 12px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #000;
+  box-shadow: inset 0 0 4px rgba(255,255,255,0.1);
+  z-index: 2;
+}
+
+/* Aged paper corners */
+.diary-card-content {
+  position: relative;
+  z-index: 3;
+  padding: 12px 12px 12px 50px;
+}
+
+/* Folded corner effect */
+.diary-card .corner-fold {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 22px 22px;
+  border-color: transparent transparent rgba(0,0,0,0.18) transparent;
+  z-index: 4;
+}
+
+/* Add note form inputs */
+.note-input {
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  color: #e2e8f0;
+  border-radius: 8px;
+  transition: border-color 0.2s, background 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+.note-input::placeholder { color: rgba(255,255,255,0.35); }
+.note-input:focus {
+  outline: none;
+  border-color: rgba(255, 200, 80, 0.7);
+  background: rgba(255,255,255,0.1);
+}
+
+/* Add Note button */
+.add-btn {
+  background: linear-gradient(135deg, #f5c842, #f0a500);
+  color: #1a1a1a;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  border-radius: 8px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 14px rgba(245, 200, 66, 0.35);
+  font-family: 'Inter', sans-serif;
+}
+.add-btn:active { transform: scale(0.97); }
+.add-btn:hover { box-shadow: 0 6px 20px rgba(245, 200, 66, 0.5); }
+
+/* Delete button */
+.del-btn {
+  background: linear-gradient(135deg, #e53e3e, #c53030);
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  padding: 4px 10px;
+  transition: transform 0.12s;
+  box-shadow: 0 2px 6px rgba(197,48,48,0.4);
+}
+.del-btn:active { transform: scale(0.95); }
+
+/* Scrollbar for notes panel */
+.notes-scroll::-webkit-scrollbar { width: 5px; }
+.notes-scroll::-webkit-scrollbar-track { background: transparent; }
+.notes-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 99px; }
